@@ -1,292 +1,118 @@
-
-# Multimodal AI Chatbot with Ollama
-
-## Overview
-
-Multimodal AI Chatbot is a local AI-powered application that enables users to upload and interact with multiple file formats, including PDF documents, Word files, images, and audio files. The system extracts content from uploaded files, processes the information, and generates intelligent responses using locally hosted Large Language Models through Ollama.
-
-This project focuses on privacy-first AI by running inference locally without requiring cloud-based AI services.
-
----
-
-## Features
-
-### Document Processing
-
-* PDF Text Extraction using PyMuPDF
-* Word Document Processing (.docx)
-* Multi-file Upload Support
-* Automatic Content Extraction
-
-### Image Understanding
-
-* OCR-based Text Extraction
-* Supports JPG, JPEG, PNG, GIF, and BMP formats
-* Text Recognition using Tesseract OCR
-
-### Audio Processing
-
-* Speech-to-Text Conversion
-* WAV, MP3, and FLAC Support
-* Automatic Audio Transcription
-
-### AI-Powered Question Answering
-
-* Context-Aware Responses
-* Local LLM Inference using Ollama
-* TinyLlama Integration
-* File-Based Question Answering
-
-### Conversation Management
-
-* Chat History Tracking
-* Session-Based Conversations
-* PDF Transcript Export
-
-### User Interface
-
-* Interactive Streamlit Dashboard
-* Drag-and-Drop File Upload
-* Real-Time AI Responses
-* Modern Custom CSS Styling
-
----
-
-## System Architecture
-
-User Upload
-↓
-PDF / DOCX / Image / Audio
-↓
-Content Extraction
-↓
-Text Processing & Chunking
-↓
-Context Generation
-↓
-Ollama (TinyLlama)
-↓
-AI Response
-↓
-Conversation Storage
-↓
-PDF Export
-
----
-
-## Supported File Types
-
-| Category  | Supported Formats                   |
-| --------- | ----------------------------------- |
-| Documents | PDF, DOCX, DOC                      |
-| Images    | JPG, JPEG, PNG, GIF, BMP            |
-| Audio     | WAV, MP3, FLAC                      |
-| Video     | MP4, AVI, MOV, MKV (Future Support) |
-
----
-
-## Tech Stack
-
-### Frontend
-
-* Streamlit
-
-### AI & NLP
-
-* Ollama
-* TinyLlama
-
-### Document Processing
-
-* PyMuPDF
-* python-docx
-
-### OCR
-
-* Tesseract OCR
-* OpenCV
-
-### Speech Recognition
-
-* SpeechRecognition
-
-### Data Processing
-
-* NumPy
-
-### PDF Generation
-
-* FPDF
-
----
-
-## Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/multimodal-ai-chatbot.git
-cd multimodal-ai-chatbot
-```
-
-### Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### Activate Environment
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Linux/Mac:
-
-```bash
-source venv/bin/activate
-```
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Install Ollama
-
-Download and install Ollama:
-
-https://ollama.com
-
-Pull TinyLlama Model:
-
-```bash
-ollama pull tinyllama
-```
-
-Verify Installation:
-
-```bash
-ollama run tinyllama
-```
-
----
-
-## Run Application
-
-```bash
-streamlit run app.py
-```
-
-Application will be available at:
-
-```text
-http://localhost:8501
-```
-
----
-
-## Project Structure
-
-```text
-multimodal-ai-chatbot/
-
-│
-├── app.py
-├── styles.css
-├── requirements.txt
+Multimodal Chatbot with Ollama LLaMA and Streamlit
+A multimodal AI chatbot built with Streamlit, using Ollama's LLaMA model for generating detailed answers locally. This app accepts PDFs, Word documents, images, audio, and video files, extracts their content, and provides context-based answers to user questions.
+
+FEATURES:
+Upload multiple files of types: PDF, DOCX, DOC, images (JPG, PNG, GIF, BMP), audio (WAV, MP3, FLAC), and video (MP4, AVI, MOV, MKV).
+Extract text from PDFs and Word using PyMuPDF and python-docx.
+OCR text extraction from images via pytesseract and OpenCV.
+Audio transcription via Google Speech Recognition (SpeechRecognition library).
+Placeholder for future video text/scene extraction.
+Context-aware Q&A powered by local Ollama LLaMA model integration.
+Maintain conversation history with Streamlit session state.
+Export conversation transcript as PDF using FPDF.
+Custom CSS styling for improved UI aesthetics.
+
+
+PROJECT STRUCTURE:
+multimodal-chatbot-project/
 ├── README.md
-│
-├── assets/
-│   ├── screenshots/
-│   ├── demo_images/
-│
-├── docs/
-│   └── architecture.png
-│
-└── outputs/
-    └── conversation.pdf
-```
+├── .gitignore
+├── main.py
+├── style.css
+├── requirements.txt
+├── Dockerfile
+├── multimodal_chatbot.yaml        # GitHub Actions workflow file (in .github/workflows ideally)
+├── screenshots                 # Folder for screenshot images
+├── videos                     # Folder for recorded videos
 
----
 
-## Workflow
+INSTALLATION:
+SYSTEM DEPENDENDCIES:
 
-1. Upload one or more files.
-2. Extract text from files.
-3. Enter a question.
-4. Generate AI response using TinyLlama.
-5. View answer.
-6. Export conversation as PDF.
+Install Tesseract OCR:
 
----
+Ubuntu: sudo apt-get install tesseract-ocr
 
-## Example Use Cases
+Windows: Download and install from UB Mannheim builds. Add tesseract.exe to your system PATH.
 
-### Academic Research Assistant
+Ensure Ollama is installed and configured locally with models like tinyllama.
 
-Upload research papers and ask questions.
+PYTHON DEPENTENDCIES
+Install Python packages listed in requirements.txt:
 
-### Resume Analyzer
+BASH
+pip install -r requirements.txt
 
-Upload resumes and extract insights.
+USAGE
+Run the app locally with:
 
-### Document Q&A System
+BASH
+streamlit run app.py
 
-Query contracts, reports, and manuals.
+Upload files in supported formats.
 
-### Image Text Reader
+Enter your question related to the uploaded content.
 
-Extract information from screenshots and scanned documents.
+Click Get Answers to extract content and receive answers generated by the Ollama LLaMA model.
 
-### Audio Transcript Assistant
+Download the conversation transcript as a PDF.
 
-Convert speech recordings into searchable text.
+CSS STYLING:
+App UI is styled using styles.css, loaded at app start to:
 
----
+Set dark red background
 
-## Future Enhancements
+Customize headers, content text color to white and bold
 
-* Video Content Understanding
-* RAG Pipeline Integration
-* FAISS Vector Database
-* ChromaDB Integration
-* Llama 3 Support
-* Mistral Support
-* Multi-Agent Workflow
-* Real-Time Voice Chat
-* Document Summarization
-* Local Embedding Models
-* GPU Acceleration
+Style buttons with white background and black text for clarity
 
----
+CODE HIGHLIGHTS:
+Uses temporary files to process uploaded content securely.
 
-## Skills Demonstrated
+Chunks long text inputs to fit language model context size.
 
-* Artificial Intelligence
-* Large Language Models (LLMs)
-* Natural Language Processing (NLP)
-* OCR Systems
-* Speech Recognition
-* Python Development
-* Streamlit Applications
-* Local AI Deployment
-* Multimodal AI Systems
-* Document Intelligence
+Handles errors during transcription or model communication gracefully.
 
----
+Supports multi-file uploads, collates transcript in session state.
 
-## Author
+Streams answers with progress spinner UI feedback.
 
-Suriya V
+DEPLOYMENT:
 
-Computer Science Engineer | AI & Machine Learning Enthusiast
+GitHub Repository
+Push code to GitHub for version control and collaboration.
 
-GitHub: https://github.com/YOUR_USERNAME
+Streamlit Cloud Deployment
+Connect GitHub repo to Streamlit Cloud.
 
-LinkedIn: https://linkedin.com/in/YOUR_LINKEDIN
+Deploy directly with auto-install of dependencies and live access.
+
+OPTIONAL: CI/CD with GitHub Actions
+Automate testing and deployment pipelines with GitHub Actions workflow (.github/workflows) to enable continuous integration.
+
+REQUIREMENTS TEXT:
+streamlit
+python-docx
+PyMuPDF
+pytesseract
+opencv-python-headless
+numpy
+SpeechRecognition
+ollama
+fpdf
+
+
+NOTES:
+Audio transcription uses Google’s online API; internet connection required.
+
+Video text extraction not implemented yet.
+
+Ollama local model must be properly installed.
+
+Tesseract OCR path must be accessible on your system.
+
+LICENCES:
+MIT License — see LICENSE file.
+
+CONTACT:
+Suriya - 8778209568

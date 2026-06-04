@@ -1,0 +1,51 @@
+/* Background color */
+.stApp {
+    background-color: #c00f0f; /* dark red */
+}
+
+/* Main container */
+.main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Headers */
+h1 {
+    color: #ffffff; /* white title */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-weight: 700;
+}
+
+h3 {
+    color: #ffffff; /* white subheaders */
+    font-weight: 600;
+}
+
+/* Extracted content and answers: white, bold */
+div[data-testid="stMarkdownContainer"],
+div[role="textbox"] {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+/* Buttons: white background, black text, no padding, no pointer cursor */
+button[kind="primary"] {
+    background-color: #ffffff;
+    border-radius: 0;
+    font-weight: normal;
+    padding: 0;
+    cursor: default;
+    color: #000000;
+    border: none;
+    box-shadow: none;
+}
+
+/* Remove hover effects — keep button plain */
+button[kind="primary"]:hover {
+    background-color: #ffffff;
+    color: #000000;
+    cursor: default;
+    box-shadow: none;
+}

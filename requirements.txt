@@ -1,0 +1,9 @@
+streamlit
+python-docx
+PyMuPDF
+pytesseract
+opencv-python-headless
+numpy
+SpeechRecognition
+ollama
+fpdf
